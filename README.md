@@ -10,23 +10,23 @@ API Test Automation - project that uses Cucumber-style testing with Python and B
 
 ## Setup Instructions
 
-# Clone the repository
+### Clone the repository
 
 git clone https://github.com/NaliniNandakumar/BBC_API_Automation.git
 cd your-repo
 
-# Create and activate a virtual environment
+### Create and activate a virtual environment
 
 python -m venv .venv
 source .venv/bin/activate      # macOS/Linux
 .venv\Scripts\activate         # Windows
 
-# Install dependencies
+### Install dependencies
 pip install -r requirements.txt
-# Or manually:
+### Or manually:
 pip install behave requests
 
-# Running Tests
+### Running Tests
 behave
-# Run a specific feature file:
+### Run a specific feature file:
 behave features/get_api.feature
