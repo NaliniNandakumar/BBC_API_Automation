@@ -9,9 +9,12 @@ def step_given_api_endpoint(context, url):
 
 @when('I send a GET request')
 def step_when_get_request(context):
-    response = requests.get(context.url)
-    context.response = response
-    context.response_time_ms = response.elapsed.total_seconds() * 1000  # convert to milliseconds
+    try:
+        response = requests.get(context.url, timeout=5)  # Add timeout
+        context.response = response
+        context.response_time_ms = response.elapsed.total_seconds() * 1000  # convert to milliseconds
+    except requests.exceptions.RequestException as e:
+        raise AssertionError(f"Failed to send GET request: {str(e)}")
 
 @then('the response status code should be {expected_status:d}')
 def step_then_status_code(context, expected_status):
@@ -95,13 +98,7 @@ def step_verify_date_header(context):
         parsed_date = parsedate_to_datetime(date_header)
     except Exception as e:
         raise AssertionError(f"Invalid 'Date' header format: {date_header} — Error: {e}")
-    
-@then('the response status code should be {expected_status:d}')
-def step_check_status_code(context, expected_status):
-    actual_status = context.response.status_code
-    assert actual_status == expected_status, (
-        f"Expected status code {expected_status}, but got {actual_status}"
-    )
+
 
 @then("the error object should contain 'details' and 'http_response_code'")
 def step_verify_error_object_properties(context):
