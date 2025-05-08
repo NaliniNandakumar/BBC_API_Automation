@@ -12,14 +12,14 @@ API Test Automation - project that uses Cucumber-style testing with Python and B
 
 ### Clone the repository
 
-git clone https://github.com/NaliniNandakumar/BBC_API_Automation.git
-cd your-repo
+- git clone https://github.com/NaliniNandakumar/BBC_API_Automation.git
+- cd your-repo
 
 ### Create and activate a virtual environment
 
-python -m venv .venv
-source .venv/bin/activate      # macOS/Linux
-.venv\Scripts\activate         # Windows
+- python -m venv .venv
+- source .venv/bin/activate      # macOS/Linux
+- .venv\Scripts\activate         # Windows
 
 ### Install dependencies
 pip install -r requirements.txt
